@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        Airplane boeing = new Boeing();
-        System.out.println("Boeing Capacity: " + boeing.getCapacity());
+        AirplaneCreator creator = new BoeingCreator();
+        Airplane boeing = creator.prepareAirplane("Paris", 3, 1200);
+        System.out.println(boeing.getDestination());
     }
 }
