@@ -1,8 +1,8 @@
-package factoryMethod;
+package factorymethod;
 
-public class BoeingCreator extends AirplaneCreator{
+public class BoeingCreator extends AirplaneCreator {
     @Override
-    public Airplane createAirplane(){
+    public Airplane createAirplane() {
         Boeing boeingPlane = new Boeing();
         return boeingPlane;
     }

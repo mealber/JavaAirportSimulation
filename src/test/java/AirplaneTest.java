@@ -1,7 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import factoryMethod.*;
+import factorymethod.Airplane;
+import factorymethod.BoeingCreator;
+import factorymethod.AirplaneCreator;
 
 public class AirplaneTest {
     @Test

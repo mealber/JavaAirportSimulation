@@ -1,4 +1,4 @@
-package factoryMethod;
+package factorymethod;
 
 public class Boeing implements Airplane {
     private int capacity;
@@ -8,7 +8,7 @@ public class Boeing implements Airplane {
     private String destination;
     private int departureTime;
 
-    public Boeing(){
+    public Boeing() {
         this.capacity = 500;
         this.fuelCap = 63000;
         this.type = "Boeing";
