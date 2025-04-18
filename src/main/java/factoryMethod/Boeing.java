@@ -8,6 +8,9 @@ public class Boeing implements Airplane {
     private String destination;
     private int departureTime;
 
+    /**
+    * creates a new Boeing airplane with set capacity and fuel values based on airplane type.
+    */
     public Boeing() {
         this.capacity = 500;
         this.fuelCap = 63000;

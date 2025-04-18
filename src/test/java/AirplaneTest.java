@@ -1,11 +1,14 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.Test;
 import factorymethod.Airplane;
-import factorymethod.BoeingCreator;
 import factorymethod.AirplaneCreator;
+import factorymethod.BoeingCreator;
+import org.junit.jupiter.api.Test;
 
 public class AirplaneTest {
+    /**
+    *This method tests that the fuel capacity of a boeing matches the expected set value.
+    */
     @Test
     public void testGetCapacity() {
         AirplaneCreator creator = new BoeingCreator();
