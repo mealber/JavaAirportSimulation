@@ -1,3 +1,5 @@
+package factoryMethod;
+
 public class Boeing implements Airplane {
     private int capacity;
     private int fuelCap;

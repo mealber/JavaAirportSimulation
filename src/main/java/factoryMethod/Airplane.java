@@ -1,3 +1,5 @@
+package factoryMethod;
+
 public interface Airplane {
     int getCapacity();
     String getType();

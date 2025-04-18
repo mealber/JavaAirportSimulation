@@ -1,3 +1,5 @@
+package factoryMethod;
+
 public abstract class AirplaneCreator{
     public abstract Airplane createAirplane();
 
