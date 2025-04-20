@@ -24,6 +24,10 @@ public class Passenger {
         return state;
     }
 
+    public Airplane getFlight() {
+        return flight;
+    }
+
     public String getDestination() {
         return flight.getDestination();
     }
