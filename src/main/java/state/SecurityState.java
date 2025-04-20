@@ -13,7 +13,7 @@ public class SecurityState implements PassengerState {
             System.out.println(passenger.getName() + " passed security checkpoint " + (i + 1) + ".");
         }
 
-        //passenger.setState(new BoardingState()); //change state if all security points are passed
+        passenger.setState(new BoardingState()); //change state if all security points are passed
         return true;
     }
 }
