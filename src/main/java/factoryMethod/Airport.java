@@ -7,6 +7,9 @@ public class Airport {
     private ArrayList<Airplane> airplaneList = new ArrayList<>();
     private int securityChecks;
 
+    /**
+    *Creates new airport object.
+    */
     public Airport() {
         this.name = null;
         this.airplaneList = null;

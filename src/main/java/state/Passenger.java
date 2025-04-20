@@ -6,6 +6,9 @@ public class Passenger {
     private Airplane flight; //passenger's assigned flight
     private String name; //passenger name
 
+    /**
+    *Creates new passenger initialized to arrived state.
+    */
     public Passenger(Airplane flight) {
         this.state = new ArrivedState(); //initial state of passenger     
         this.flight = flight;
