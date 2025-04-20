@@ -2,9 +2,9 @@ import factorymethod.Airplane;
 import factorymethod.Airport;
 
 public class Passenger {
-    private PassengerState state;
-    private Airplane flight;
-    private String name;
+    private PassengerState state; //tracks state of passenger during airport processes
+    private Airplane flight; //passenger's assigned flight
+    private String name; //passenger name
 
     public Passenger(Airplane flight) {
         this.state = new ArrivedState(); //initial state of passenger     
