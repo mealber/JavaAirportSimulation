@@ -1,16 +1,17 @@
 import factory.Airplane;
 import factory.Airport;
+import data.Flight;
 
 public class Passenger {
     private PassengerState state; //tracks state of passenger during airport processes
-    private Airplane flight; //passenger's assigned flight
+    private Flight flight; //passenger's assigned flight
     private String name; //passenger name
 
     /**
     *Creates new passenger initialized to arrived state,
     *meaning passenger has just arrived at airport.
     */
-    public Passenger(Airplane flight) {
+    public Passenger(Flight flight) {
         this.state = new ArrivedState(); //initial state of passenger     
         this.flight = flight; 
         this.name = null;
@@ -46,7 +47,7 @@ public class Passenger {
     }
 
     public int getBoardingTime() {
-        return calculateBoardingTime(flight.getDepartureTime());
+        return flight.getBoardingTime();
     }
 
     public void setName(String name) {
@@ -55,16 +56,5 @@ public class Passenger {
 
     public String getName() {
         return name;
-    }
-
-    /**
-    *Calculates the boarding time of flight,
-    *based on departure time.
-    *
-    *@param departureTime the time the flight departs
-    *@return boarding time of flight
-    */
-    private int calculateBoardingTime(int departureTime) {
-        return departureTime - 100; //board one hour before departure
     }
 }

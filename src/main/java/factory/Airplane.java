@@ -1,4 +1,5 @@
 package factory;
+import data.Flight;
 
 public abstract class Airplane {
     //capacity and fuel fixed based on type
@@ -55,6 +56,11 @@ public abstract class Airplane {
 
     public void setDepartureTime(int departureTime) {
         this.departureTime = departureTime;
+    }
+
+    public Flight toFlight() {
+        Flight flight = new Flight(destination, gate, departureTime);
+        return flight;
     }
 
     //includes refueling, unique to differnt airplanes
