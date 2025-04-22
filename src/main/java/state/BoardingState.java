@@ -10,7 +10,7 @@ public class BoardingState implements PassengerState {
             //passenger misses boarding their plane
             System.out.println(passenger.getName() 
                 + " missed boarding at gate " 
-                + passenger.getFlight().getGate() + ".");   
+                + passenger.getGate() + ".");   
 
             return false;
         }
@@ -18,7 +18,7 @@ public class BoardingState implements PassengerState {
         //passenger successfully boards plane
         System.out.println(passenger.getName() 
             + " has boarded at gate " 
-            + passenger.getFlight().getGate() + ".");
+            + passenger.getGate() + ".");
 
         return true;
     }

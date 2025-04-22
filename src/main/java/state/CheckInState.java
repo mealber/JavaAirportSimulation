@@ -7,8 +7,8 @@ public class CheckInState implements PassengerState {
         double failingChance = Math.random();
         if (failingChance < 0.05) { //5% chance to fail check-in
 
-           //passenger fails to check-in 
-           System.out.println(passenger.getName() 
+            //passenger fails to check-in 
+            System.out.println(passenger.getName() 
                 + " has failed to check in at " 
                 + airport.getName() + ".");
 

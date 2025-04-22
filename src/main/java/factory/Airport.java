@@ -38,11 +38,13 @@ public abstract class Airport {
         return runways;
     }
 
+    //adds airplane to airplane list
     public void addAirplanes(Airplane airplane) {
         airplanes.add(airplane);
     }
 
+    //returns a copy of airplane list to protect internal info
     public ArrayList<Airplane> getAirplanes() {
-        return airplanes;
+        return new ArrayList<>(airplanes);
     }
 }

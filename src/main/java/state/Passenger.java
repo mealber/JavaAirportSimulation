@@ -37,8 +37,8 @@ public class Passenger {
         return state;
     }
 
-    public Airplane getFlight() {
-        return flight;
+    public int getGate() {
+        return flight.getGate();
     }
 
     public String getDestination() {
