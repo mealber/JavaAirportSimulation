@@ -1,3 +1,5 @@
+package state;
+
 import factory.Airport;
 
 public class SecurityState implements PassengerState {

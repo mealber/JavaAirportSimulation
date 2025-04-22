@@ -1,3 +1,5 @@
+package state;
+
 import data.Flight;
 import factory.Airplane;
 import factory.Airport;
@@ -11,10 +13,10 @@ public class Passenger {
     *Creates new passenger initialized to arrived state,
     *meaning passenger has just arrived at airport.
     */
-    public Passenger(Flight flight) {
+    public Passenger(String name, Flight flight) {
         this.state = new ArrivedState(); //initial state of passenger     
         this.flight = flight; 
-        this.name = null;
+        this.name = name;
     }
 
     /**

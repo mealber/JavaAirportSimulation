@@ -1,3 +1,5 @@
+package state;
+
 import factory.Airport;
 
 public interface PassengerState {
