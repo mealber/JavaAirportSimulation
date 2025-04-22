@@ -1,4 +1,5 @@
 package factory;
+
 import data.Flight;
 
 public abstract class Airplane {
@@ -58,6 +59,10 @@ public abstract class Airplane {
         this.departureTime = departureTime;
     }
 
+    /**
+    *converts airplane into immutable flight object,
+    *contains neccesary info for passengers.
+    */
     public Flight toFlight() {
         Flight flight = new Flight(destination, gate, departureTime);
         return flight;

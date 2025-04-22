@@ -1,6 +1,6 @@
+import data.Flight;
 import factory.Airplane;
 import factory.Airport;
-import data.Flight;
 
 public class Passenger {
     private PassengerState state; //tracks state of passenger during airport processes

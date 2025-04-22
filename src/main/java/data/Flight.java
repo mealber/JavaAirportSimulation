@@ -5,6 +5,11 @@ public class Flight {
     private int gate;
     private int boardingTime;
 
+    /**
+    *Creates immutable flight object,
+    *contains neccesary info for passengers,
+    *this includes destination, gate number, and boarding time.
+    */
     public Flight(String destination, int gate, int departureTime) {
         this.destination = destination;
         this.gate = gate;
