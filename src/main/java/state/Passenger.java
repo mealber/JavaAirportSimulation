@@ -7,18 +7,28 @@ public class Passenger {
     private String name; //passenger name
 
     /**
-    *Creates new passenger initialized to arrived state.
+    *Creates new passenger initialized to arrived state,
+    *meaning passenger has just arrived at airport.
     */
     public Passenger(Airplane flight) {
         this.state = new ArrivedState(); //initial state of passenger     
-        this.flight = flight;
-        this.name = null;  
+        this.flight = flight; 
+        this.name = null;
     }
 
+    /**
+    *Calls handle method of current state,
+    *if passed, advances pasenger to next state.
+    *
+    *@param airport the airport passenger is at
+    */
     public void updateState(Airport airport) {
         state.handle(this, airport);
     }
 
+    /**
+    *Sets the current state of passenger.
+    */
     public void setState(PassengerState state) {
         this.state = state;
     }

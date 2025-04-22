@@ -6,6 +6,6 @@ public class ArrivedState implements PassengerState {
         System.out.println(passenger.getName() + " has arrived at " + airport.getName() + ".");
         System.out.println(passenger.getName() + " is approaching check-in.");
         passenger.setState(new CheckInState()); //change passenger state to check-in
-        return true;
+        return true; //passenger has arrived
     }
 }
