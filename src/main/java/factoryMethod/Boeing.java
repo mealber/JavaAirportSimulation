@@ -12,6 +12,7 @@ public class Boeing implements Airplane {
     * creates a new Boeing airplane with set capacity and fuel values based on airplane type.
     */
     public Boeing() {
+        //capacity and fuel fixed based on type
         this.capacity = 500;
         this.fuelCap = 63000;
         this.type = "Boeing";

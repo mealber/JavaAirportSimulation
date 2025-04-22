@@ -1,6 +1,9 @@
 package factorymethod;
 
 public abstract class AirplaneCreator {
+    /**
+    *Method responsible for creating basic airplanes.
+    */
     public abstract Airplane createAirplane();
 
     /**
