@@ -1,25 +1,62 @@
 package factory;
 
-public interface Airplane {
+public abstract class Airplane {
+    //capacity and fuel fixed based on type
+    private final int capacity;
+    private final int fuelCap;
+    private final String type;
+    private int gate;
+    private String destination;
+    private int departureTime;
 
-    int getCapacity();
+    /**
+    * creates a new Boeing airplane with set capacity and fuel values based on airplane type.
+    */
+    public Airplane(int capacity, int fuelCap, String type) {
+        this.capacity = capacity;
+        this.fuelCap = fuelCap;
+        this.type = type;
+        this.gate = -1; //no gate assigned yet
+        this.destination = null; //no destination assigned yet
+        this.departureTime = -1; //no departure time assigned yet
+    } 
 
-    String getType();
+    public int getCapacity() {
+        return this.capacity;
+    }
 
-    int getFuelCap();
+    public int getFuelCap() {
+        return this.fuelCap;
+    }
 
-    int getGate();
+    public String getType() {
+        return this.type;
+    }
 
-    void setGate(int gate);
+    public int getGate() {
+        return this.gate;
+    }
 
-    String getDestination();
+    public void setGate(int gate) {
+        this.gate = gate;
+    }
 
-    void setDestination(String destination);
+    public String getDestination() {
+        return this.destination;
+    }
 
-    int getDepartureTime();
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
 
-    void setDepartureTime(int departureTime);
+    public int getDepartureTime() {
+        return this.departureTime;
+    }
 
-    //includes refueling
-    void doMaintenance();
+    public void setDepartureTime(int departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    //includes refueling, unique to differnt airplanes
+    abstract void doMaintenance();
 }
