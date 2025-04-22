@@ -1,4 +1,4 @@
-package factorymethod;
+package factory;
 
 public class BoeingCreator extends AirplaneCreator {
     /**

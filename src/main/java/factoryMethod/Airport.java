@@ -1,42 +1,48 @@
-package factorymethod;
+package factory;
 
 import java.util.ArrayList;
 
-public class Airport {
-    private String name;
-    private ArrayList<Airplane> airplaneList = new ArrayList<>();
-    private int securityChecks;
+public abstract class Airport {
+
+    //name, checks, gates, and runways fixed based on airport
+    private final String name;
+    private final int securityChecks;
+    private final int gates;
+    private final int runways;
+    private ArrayList<Airplane> airplanes = new ArrayList<>();
 
     /**
-    *Creates new airport object.
+    *Creates new airport object with empty airplane list.
     */
-    public Airport() {
-        this.name = null;
-        this.airplaneList = null;
-        this.securityChecks = -1;
-    }
-
-    public void setName(String name) {
+    public Airport(String name, int checks, int gates, int runways) {
         this.name = name;
+        this.securityChecks = checks;
+        this.gates = gates;
+        this.runways = runways;
+        this.airplanes = null;
     }
 
     public String getName() {
         return name;
     }
 
-    public void addAirplane(Airplane airplane) {
-        airplaneList.add(airplane);
-    }
-
-    public ArrayList<Airplane> getAirplaneList() {
-        return airplaneList;
-    }
-
-    public void setSecurityChecks(int checkPoints) {
-        this.securityChecks = checkPoints;
-    }
-
     public int getSecurityChecks() {
         return securityChecks;
+    }
+
+    public int getGates() {
+        return gates;
+    }
+
+    public int getRunways() {
+        return runways;
+    }
+
+    public void addAirplanes(Airplane airplane) {
+        airplanes.add(airplane);
+    }
+
+    public ArrayList<Airplane> getAirplanes() {
+        return airplanes;
     }
 }

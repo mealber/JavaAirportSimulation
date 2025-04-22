@@ -1,4 +1,4 @@
-import factorymethod.Airport;
+import factory.Airport;
 
 public class CheckInState implements PassengerState {
     @Override

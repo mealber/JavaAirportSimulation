@@ -1,7 +1,7 @@
-import factorymethod.Airplane;
-import factorymethod.AirplaneCreator;
-import factorymethod.Boeing;
-import factorymethod.BoeingCreator;
+import factory.Airplane;
+import factory.AirplaneCreator;
+import factory.Boeing;
+import factory.BoeingCreator;
 
 public class Main {
     /**

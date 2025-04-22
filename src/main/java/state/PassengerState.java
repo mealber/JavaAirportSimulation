@@ -1,4 +1,4 @@
-import factorymethod.Airport;
+import factory.Airport;
 
 public interface PassengerState {
     /**

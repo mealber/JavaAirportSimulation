@@ -1,5 +1,5 @@
-import factorymethod.Airplane;
-import factorymethod.Airport;
+import factory.Airplane;
+import factory.Airport;
 
 public class Passenger {
     private PassengerState state; //tracks state of passenger during airport processes

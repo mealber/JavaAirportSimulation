@@ -1,4 +1,4 @@
-package factorymethod;
+package factory;
 
 public class Boeing implements Airplane {
     //capacity and fuel fixed based on type
