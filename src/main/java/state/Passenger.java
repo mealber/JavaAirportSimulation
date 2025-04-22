@@ -25,8 +25,8 @@ public class Passenger {
     *
     *@param airport the airport passenger is at
     */
-    public void updateState(Airport airport) {
-        state.handle(this, airport);
+    public boolean updateState(Airport airport) {
+        return state.handle(this, airport);
     }
 
     /**

@@ -12,7 +12,7 @@ public class SecurityState implements PassengerState {
 
                 //security checkpoint failed
                 System.out.println(passenger.getName() 
-                    + " failed security checkpoint " 
+                    + " has failed security checkpoint " 
                     + (i + 1) + ".");   
 
                 return false;
@@ -20,7 +20,7 @@ public class SecurityState implements PassengerState {
 
             //all checkpoints have been passed
             System.out.println(passenger.getName() 
-                + " passed security checkpoint " 
+                + " has passed security checkpoint " 
                 + (i + 1) + ".");
         }
 
