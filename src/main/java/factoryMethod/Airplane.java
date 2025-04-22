@@ -1,13 +1,6 @@
 package factorymethod;
 
 public interface Airplane {
-    /**
-    *Airplanes have varying 
-    *capacity and fuel effiencies, 
-    *are assigned airports,
-    *gates, destinations, and departure times,
-    *must refuel and do maintenance.
-    */
 
     int getCapacity();
 

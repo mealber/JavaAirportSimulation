@@ -1,9 +1,10 @@
 package factorymethod;
 
 public class Boeing implements Airplane {
-    private int capacity;
-    private int fuelCap;
-    private String type;
+    //capacity and fuel fixed based on type
+    private final int capacity;
+    private final int fuelCap;
+    private final String type;
     private int gate;
     private String destination;
     private int departureTime;
@@ -12,13 +13,12 @@ public class Boeing implements Airplane {
     * creates a new Boeing airplane with set capacity and fuel values based on airplane type.
     */
     public Boeing() {
-        //capacity and fuel fixed based on type
         this.capacity = 500;
         this.fuelCap = 63000;
         this.type = "Boeing";
-        this.gate = -1; //set to invalid gate so I know if gate hasn't been assigned yet
-        this.destination = null; //set to null before assigned
-        this.departureTime = -1; //invalid time so I know if time hasn't been assigned yet
+        this.gate = -1; //no gate assigned yet
+        this.destination = null; //no destination assigned yet
+        this.departureTime = -1; //no departure time assigned yet
     } 
 
     @Override
