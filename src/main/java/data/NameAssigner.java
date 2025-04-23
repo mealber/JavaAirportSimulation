@@ -45,23 +45,16 @@ public class NameAssigner {
     }
 
     /**
-    *Names all airports.
+    *Randomly names airport.
     *
-    *@param airports list of all airports.
+    *@param airport the current airport.
     */
-    public void nameAirports(ArrayList<Airport> airports) {
+    public void nameAirports(Airport airport) {
         Random random = new Random();
         int size = airportNames.size();
+        int rand = random.nextInt(size); //generate random index for name list
 
-        for(Airport a : airports) {
-            int rand = random.nextInt(size); //generate random index for name list
-
-            while(airportNames.get(rand) == null) {
-                rand = random.nextInt(size); //generate new index if name has been used
-            }
-            a.setName(airportNames.get(rand)); //set name using random index
-            airportNames.set(rand, null); //change used names to null to avoid duplicates
-        }
+        airport.setName(airportNames.get(rand)); //set name using random index
     }
 
     /**
