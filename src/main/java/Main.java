@@ -1,5 +1,3 @@
-import factory.*;
-
 public class Main {
     /**
     *entry point of airport simulation.

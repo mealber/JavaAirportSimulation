@@ -2,41 +2,113 @@ import java.util.ArrayList;
 import factory.*;
 import state.*;
 import data.*;
+import java.util.Random;
 
 public class Simulation {
-//initialize, then name, then use observer to call things when appropriate,
-//clear list and display logs at the end of every simulation
+    Random random = new Random();
+    NameAssigner nameAssigner = new NameAssigner();
+    AirplanePreparer preparer = new AirplanePreparer();
+    public Airport currentAirport; //airport for current round of simulation
 
+    ArrayList<Airport> airports = new ArrayList<>(); //all airports used for simulation
+    ArrayList<Airplane> airplanes = new ArrayList<>(); //all airplanes used for simulation
+    ArrayList<Passenger> passengers = new ArrayList<>(); //all passengers used for simulation
+    ArrayList<Flight> flights = new ArrayList<>(); //all flights used for simulation
+
+    /**
+    *Sets up airports and airplanes for simulation.
+    */
     public void setUp() {
-        AirplaneCreator airplaneCreator = new SmallPlaneCreator(); //TODO decided to group creators into small medium and large, pass name through constructor
-        AirportCreator airportCreator = new SmallAirportCreator(); //TODO same for airports 
+        generateAirports();
+        currentAirport = getCurrentAirport();
 
-        ArrayList<String> names = new ArrayList<>();
-        ArrayList<Airport> airports = new ArrayList<>();
-        ArrayList<Airplane> airplanes = new ArrayList<>();
-        ArrayList<Flight> flights = new ArrayList<>();
+        generateAirplanes();
+        generatePassengers();
 
-        names.add("Bob");
-        names.add("Sarah");
+        nameAssigner.nameAirports(airports);
+        nameAssigner.nameAirplanes(airplanes);
+        nameAssigner.namePassengers(passengers);
+    }
 
-        Airport lax = airportCreator.createAirport();
-        airports.add(lax);
+    /**
+    *Generates 10 airports of random size.
+    */
+    public void generateAirports() {
+        for(int i = 0; i < 10; i++) { //create 10 airports at random for simulation
+            AirportCreator airportCreator;
+            int rand = random.nextInt(3);
 
-        Airplane boeing = airplaneCreator.prepareAirplane("Paris", 3, 1200); //TODO create set/get name methods for the airplanes
-        airplanes.add(boeing);
-
-        flights.add(boeing.toFlight());
-
-        Passenger p1 = new Passenger(flights.get(0));
-        p1.setName(names.get(0));
-
-        //testing changing through different passenger states
-        while(p1.updateState(airports.get(0))) {
-            p1.updateState(airports.get(0));
-
-            if(p1.getState() instanceof BoardingState) {
-                break;
+            switch(rand) { //randomly choose airport size
+                case 0:
+                    airportCreator = new SmallAirportCreator();
+                    break;
+                case 1:
+                    airportCreator = new MediumAirportCreator();
+                    break;
+                case 2:
+                    airportCreator = new LargeAirportCreator();
+                    break;
+                default:
+                    airportCreator = new SmallAirportCreator();
+                    break;
             }
+            Airport airport = airportCreator.createAirport();
+            airports.add(airport);
         }
+    }
+
+    /**
+    *Generates 10 airplanes of random size and prepares them for simulation.
+    */
+    public void generateAirplanes() {
+        for(int i = 0; i < 10; i++) { //create 10 airports at random for simulation
+            AirplaneCreator airplaneCreator;
+            int rand = random.nextInt(3);
+
+            switch(rand) { //randomly choose airport size
+                case 0:
+                    airplaneCreator = new SmallPlaneCreator();
+                    break;
+                case 1:
+                    airplaneCreator = new MediumPlaneCreator();
+                    break;
+                case 2:
+                    airplaneCreator = new LargePlaneCreator();
+                    break;
+                default:
+                    airplaneCreator = new SmallPlaneCreator();
+                    break;
+            }
+            Airplane airplane = airplaneCreator.createAirplane();
+
+            //assigns gate, destination, and departure time
+            preparer.prepareAirplane(airplane, getCurrentAirport());
+
+            flights.add(airplane.toFlight()); //create flight for airplane
+
+            airplanes.add(airplane);
+        }
+    }
+
+    /**
+    *Generates 20 passengers and assigns them to random flights.
+    */
+    public void generatePassengers() {
+        for(int i = 0; i < 20; i++) {
+            int size = flights.size();
+            int rand = random.nextInt(size); //choose random flight from list
+
+            Flight flight = flights.get(rand);
+            Passenger passenger = new Passenger(flight); //create passenger and assign to flight
+
+            passengers.add(passenger);
+        }
+    }
+
+    public Airport getCurrentAirport() {
+        int size = airports.size();
+        int rand = random.nextInt(size); //choose random airport from list
+
+        return airports.get(rand);
     }
 }
