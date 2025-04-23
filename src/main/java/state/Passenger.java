@@ -13,10 +13,10 @@ public class Passenger {
     *Creates new passenger initialized to arrived state,
     *meaning passenger has just arrived at airport.
     */
-    public Passenger(String name, Flight flight) {
+    public Passenger(Flight flight) {
         this.state = new ArrivedState(); //initial state of passenger     
         this.flight = flight; 
-        this.name = name;
+        this.name = null;
     }
 
     /**
