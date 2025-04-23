@@ -1,12 +1,12 @@
 package factory;
 
-public class SmallPlaneCreator extends AirplaneCreator {
+public class LargePlaneCreator extends AirplaneCreator {
     /**
     *Creates plane with fixed attributes initialzied.
     */
     @Override
     public Airplane createAirplane() {
-        SmallPlane jet = new SmallPlane();
+        LargePlane jet = new LargePlane();
         return jet;
     }
 }
