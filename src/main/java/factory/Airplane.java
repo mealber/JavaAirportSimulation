@@ -6,7 +6,6 @@ public abstract class Airplane {
     //capacity and fuel fixed based on type
     private final int capacity;
     private final int fuelCap;
-    private final String type;
     private int gate;
     private String destination;
     private int departureTime;
@@ -15,10 +14,9 @@ public abstract class Airplane {
     /**
     * creates a new airplane with set capacity and fuel values based on airplane type.
     */
-    public Airplane(int capacity, int fuelCap, String type) {
+    public Airplane(int capacity, int fuelCap) {
         this.capacity = capacity;
         this.fuelCap = fuelCap;
-        this.type = type;
         this.gate = -1; //no gate assigned yet
         this.destination = null; //no destination assigned yet
         this.departureTime = -1; //no departure time assigned yet
@@ -31,10 +29,6 @@ public abstract class Airplane {
 
     public int getFuelCap() {
         return this.fuelCap;
-    }
-
-    public String getType() {
-        return this.type;
     }
 
     public int getGate() {

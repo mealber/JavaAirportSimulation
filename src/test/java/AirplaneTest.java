@@ -2,7 +2,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import factory.Airplane;
 import factory.AirplaneCreator;
-import factory.BoeingCreator;
+import factory.SmallPlaneCreator;
 import org.junit.jupiter.api.Test;
 
 public class AirplaneTest {
@@ -11,7 +11,7 @@ public class AirplaneTest {
     */
     @Test
     public void testGetCapacity() {
-        AirplaneCreator creator = new BoeingCreator();
+        AirplaneCreator creator = new SmallPlaneCreator();
         Airplane boeing = creator.createAirplane();
         assertEquals(500, boeing.getCapacity());
     }
