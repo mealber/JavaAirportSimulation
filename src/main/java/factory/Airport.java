@@ -4,18 +4,18 @@ import java.util.ArrayList;
 
 public abstract class Airport {
 
-    //name, checks, gates, and runways fixed based on airport
-    private final String name;
+    //name, checks, gates, and runways fixed based on airport type
     private final int securityChecks;
     private final int gates;
     private final int runways;
+    private String name;
     private ArrayList<Airplane> airplanes = new ArrayList<>();
 
     /**
     *Creates new airport object with empty airplane list.
     */
-    public Airport(String name, int checks, int gates, int runways) {
-        this.name = name;
+    public Airport(int checks, int gates, int runways) {
+        this.name = null;
         this.securityChecks = checks;
         this.gates = gates;
         this.runways = runways;
@@ -24,6 +24,10 @@ public abstract class Airport {
 
     public String getName() {
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getSecurityChecks() {
