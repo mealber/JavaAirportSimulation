@@ -10,9 +10,10 @@ public abstract class Airplane {
     private int gate;
     private String destination;
     private int departureTime;
+    private String name;
 
     /**
-    * creates a new Boeing airplane with set capacity and fuel values based on airplane type.
+    * creates a new airplane with set capacity and fuel values based on airplane type.
     */
     public Airplane(int capacity, int fuelCap, String type) {
         this.capacity = capacity;
@@ -21,6 +22,7 @@ public abstract class Airplane {
         this.gate = -1; //no gate assigned yet
         this.destination = null; //no destination assigned yet
         this.departureTime = -1; //no departure time assigned yet
+        this.name = null; //no name assigned yet
     } 
 
     public int getCapacity() {
@@ -59,9 +61,17 @@ public abstract class Airplane {
         this.departureTime = departureTime;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     /**
     *converts airplane into immutable flight object,
-    *contains neccesary info for passengers.
+    *contains neccesary flight info for passengers.
     */
     public Flight toFlight() {
         Flight flight = new Flight(destination, gate, departureTime);
