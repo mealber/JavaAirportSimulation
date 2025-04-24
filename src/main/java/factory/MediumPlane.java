@@ -10,8 +10,8 @@ public class MediumPlane extends Airplane {
 
     @Override
     public void doMaintenance() {
-        System.out.println("Refueling " + this.getName() + " to 63,000 gallons of fuel.");
-        System.out.println("Testing components on " + this.getName() + ".");
-        System.out.println("Upgrading avionics on " + this.getName() + ".");
+        System.out.println("Refueling " + this.getName() + " to 75,000 gallons of fuel.");
+        System.out.println("Doing system diagnostics on " + this.getName() + ".");
+        System.out.println("Cleaning cabin of " + this.getName() + ".");
     }
 }

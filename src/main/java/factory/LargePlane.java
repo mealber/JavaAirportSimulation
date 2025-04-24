@@ -10,8 +10,8 @@ public class LargePlane extends Airplane {
 
     @Override
     public void doMaintenance() {
-        System.out.println("Refueling " + this.getName() + " to 63,000 gallons of fuel.");
-        System.out.println("Testing components on " + this.getName() + ".");
-        System.out.println("Upgrading avionics on " + this.getName() + ".");
+        System.out.println("Refueling " + this.getName() + " to 90,000 gallons of fuel.");
+        System.out.println("Doing pre-flight inspection on " + this.getName() + ".");
+        System.out.println("Checking fluid levels on " + this.getName() + ".");
     }
 }

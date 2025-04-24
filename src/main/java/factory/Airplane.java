@@ -73,5 +73,5 @@ public abstract class Airplane {
     }
 
     //includes refueling, unique to differnt airplanes
-    abstract void doMaintenance();
+    public abstract void doMaintenance();
 }
