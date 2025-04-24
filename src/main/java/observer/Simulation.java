@@ -35,8 +35,10 @@ public class Simulation implements Subject {
     }
 
     @Override
-    public void notifyObservers(Observer observer) {
-        observer.update();
+    public void notifyObservers() {
+        for(Observer o : observers) {
+            o.update();
+        }
     }
 
     /**
@@ -46,17 +48,23 @@ public class Simulation implements Subject {
         //create Observers
         AirportObserver airportObserver = new AirportObserver(this);
         AirplaneObserver airplaneObserver = new AirplaneObserver(this);
-        //PassengerObserver passengerObserver = new PassengerObserver(this);
+        RoundObserver roundObserver = new RoundObserver(this);
+        
+        //add observers
+        addObserver(airportObserver);
+        addObserver(airplaneObserver);
+        addObserver(roundObserver);
 
-        simulationPreparer.setUp(); //create objects for simulation
-        setObjects(); //set objects for simualtion
+        //prepare objects for simulation
+        simulationPreparer.setUp();
+        setObjects();
         //sort airplane list by departure time
+ 
+        //notify observers of new round
+        notifyObservers();
 
-        notifyObservers(airportObserver); //displays state of current airport
-        notifyObservers(airplaneObserver); //simulations boarding and departures 
-
-        simulationPreparer.reset(); //resets simulation before next round
-        round++; //increment round tracker
+        //reset simulation objects before next round
+        simulationPreparer.reset();
     }
 
     private void setObjects() {

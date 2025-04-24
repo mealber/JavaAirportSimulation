@@ -20,5 +20,5 @@ public interface Subject {
     *
     *@param time the simulation time
     */
-    void notifyObservers(Observer observer);
+    void notifyObservers();
 }
