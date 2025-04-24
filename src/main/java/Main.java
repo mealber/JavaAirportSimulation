@@ -1,11 +1,11 @@
-import data.*;
+import observer.Simulation;
 
 public class Main {
     /**
     *entry point of airport simulation.
     */
     public static void main(String[] args) {
-        SimulationPreparer simulation = new SimulationPreparer();
-        simulation.setUp();
+        Simulation simulation = new Simulation();
+        simulation.runSimulation();
     }
 }

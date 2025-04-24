@@ -1,11 +1,13 @@
 package observer;
 
+import factory.Airport;
+
 public class AirportObserver implements Observer {
-    /**
-    *Updates observers.
-    *
-    *@param simulation time
-    */
+
+    public AirportObserver() {
+
+    }
+
     @Override
     public void update(int time) {
         //todo
