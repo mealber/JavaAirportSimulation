@@ -64,6 +64,7 @@ public class Simulation implements Subject {
         notifyObservers();
 
         //reset simulation objects before next round
+        round++; //increment round
         simulationPreparer.reset();
     }
 
