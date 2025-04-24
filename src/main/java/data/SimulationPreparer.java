@@ -1,3 +1,4 @@
+
 package data;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class SimulationPreparer {
     /**
     *Generates 10 airports of random size.
     */
-    public void generateAirport() {
+    private void generateAirport() {
         AirportCreator airportCreator;
         int rand = random.nextInt(3);
 
@@ -57,7 +58,7 @@ public class SimulationPreparer {
     /**
     *Generates 10 airplanes of random size and prepares them for simulation.
     */
-    public void generateAirplanes() {
+    private void generateAirplanes() {
         for(int i = 0; i < 10; i++) { //create 10 airports at random for simulation
             AirplaneCreator airplaneCreator;
             int rand = random.nextInt(3);
@@ -90,7 +91,7 @@ public class SimulationPreparer {
     /**
     *Generates 20 passengers and assigns them to random flights.
     */
-    public void generatePassengers() {
+    private void generatePassengers() {
         for(int i = 0; i < 20; i++) {
             int size = flights.size();
             int rand = random.nextInt(size); //choose random flight from list
@@ -107,6 +108,14 @@ public class SimulationPreparer {
     */
     public Airport getCurrentAirport() {
         return currentAirport;
+    }
+
+    public ArrayList<Airplane> getAirplanes() {
+        return airplanes;
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;    
     }
 
     public void reset() {
