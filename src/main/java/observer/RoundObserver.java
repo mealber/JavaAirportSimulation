@@ -5,23 +5,26 @@ import factory.Airport;
 import state.Passenger;
 
 public class RoundObserver implements Observer {
-    Simulation s;
-    Airport a;
+    SimulationView sim;
+    Airport air;
 
-    public RoundObserver(Simulation s) {
-        this.s = s;
-        this.a = null;
+    public RoundObserver(SimulationView sim) {
+        this.sim = sim;
+        this.air = null;
     }
 
     @Override
     public void update() {
-        a = s.getAirport();
+        air = sim.getAirport();
+       
+        //print airport log
         System.out.println("---------------------------------------------");
-        System.out.println(a.getName() + " Airport Log");
+        System.out.println(air.getName() + " Airport Log");
         System.out.println("---------------------------------------------");
-        System.out.println("Passengers Serviced: " + s.getPassengers().size());
-        System.out.println("Planes Departed: " + s.getAirplanes().size());
+        System.out.println("Passengers Serviced: " + sim.getPassengers().size());
+        System.out.println("Planes Departed: " + sim.getAirplanes().size());
 
+        //pause simulation for 10 seconds between rounds
         try {
             System.out.println("\n-----Starting next round in 10 seconds-----");
             Thread.sleep(10000); //pause for 10 seconds between rounds

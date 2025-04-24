@@ -7,30 +7,26 @@ import factory.Airport;
 import state.Passenger;
 import java.util.ArrayList;
 
-public class Simulation implements Subject {
-    ArrayList<Observer> observers; //list of observers needed for simulation
-    SimulationPreparer simulationPreparer; //prepares objects for each round of simulation
-    int round; //current round of simulation
+public class Simulation implements Subject, SimulationView {
+    private ArrayList<Observer> observers; //list of observers needed for simulation
+    private SimulationPreparer simulationPreparer; //prepares objects for each round of simulation
+    private int round; //current round of simulation
 
-    Airport airport; //current airport of simulation round
-    ArrayList<Airplane> airplanes; //list of airplanes for simulation
-    ArrayList<Passenger> passengers; //list of passengers for simulation
+    private AirplaneSorter airplaneSorter = new AirplaneSorter(); //sorts airplanes by departure time
 
-    AirplaneSorter airplaneSorter = new AirplaneSorter(); //sorts airplanes by departure time
+    private AirportObserver airportObserver;
+    private AirplaneObserver airplaneObserver;
+    private RoundObserver roundObserver;
 
     public Simulation() {
         observers = new ArrayList<>();
         round = 1; //start on round 1
         simulationPreparer = new SimulationPreparer();
 
-        airport = null; //none selected yet
-        airplanes = null; //none made yet
-        passengers = null; //node made yet
-
-        //create Observers
-        AirportObserver airportObserver = new AirportObserver(this);
-        AirplaneObserver airplaneObserver = new AirplaneObserver(this);
-        RoundObserver roundObserver = new RoundObserver(this);
+        //initialize Observers
+        airportObserver = new AirportObserver(this);
+        airplaneObserver = new AirplaneObserver(this);
+        roundObserver = new RoundObserver(this);
         
         //add observers
         addObserver(airportObserver);
@@ -61,7 +57,6 @@ public class Simulation implements Subject {
     public void runSimulation() {
        //prepare objects for simulation
         simulationPreparer.setUp();
-        setObjects();
  
         //notify observers of new round
         notifyObservers();
@@ -69,12 +64,6 @@ public class Simulation implements Subject {
         //reset simulation objects before next round
         round++; //increment round
         simulationPreparer.reset();
-    }
-
-    private void setObjects() {
-        airport = getAirport(); //set current airport
-        airplanes = getAirplanes(); //get list of airplanes
-        passengers = getPassengers(); //get list of passenegrs   
     }
 
     public int getRound() {

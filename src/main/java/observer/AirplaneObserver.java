@@ -1,28 +1,36 @@
 package observer;
-import state.*;
-import factory.*;
+
+import factory.Airplane;
+import factory.Airport;
+import state.Passenger;
 
 public class AirplaneObserver implements Observer {
-    Simulation s;
+    SimulationView sim;
 
-    public AirplaneObserver(Simulation s) {
-        this.s = s;
+    public AirplaneObserver(SimulationView sim) {
+        this.sim = sim;
     }
 
     @Override
     public void update() {
-        for(Airplane a : s.getAirplanes()) {
-            for(Passenger p : s.getPassengers()) {
-                if(a.getDepartureTime() == p.getDepartureTime()) { //checks if passengers are on the next flight to depart
-                    while(true) {
-                        boolean advanced = p.updateState(s.getAirport()); //runs boarding simulation for passengers on next flight
-                        if(!advanced) {
-                            break; //breaks loop if passengers fail a boarding stage or finishes boarding
+        for (Airplane air : sim.getAirplanes()) {
+            for (Passenger pas : sim.getPassengers()) {
+                //checks if passengers are on the next flight to depart
+                if (air.getDepartureTime() == pas.getDepartureTime()) { 
+                    while (true) {
+                        //runs boarding simulation for passengers on next flight
+                        boolean advanced = pas.updateState(sim.getAirport());
+                        if (!advanced) {
+                            break; //passenger fails a boarding stage or finishes boarding
                         }
                     }
                 }
             }
-        System.out.println(a.getName() + " is now departing at " + a.getDepartureTime() + " to " + a.getDestination() + ".");
+            //simulates plane departure
+            System.out.println(air.getName()
+                + " is now departing at " + air.getDepartureTime() 
+                + " to " + air.getDestination() + "."
+            );
         }
     }
 }

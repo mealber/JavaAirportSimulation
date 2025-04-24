@@ -1,12 +1,13 @@
 package observer;
 
-import factory.*;
+import factory.Airplane;
+import factory.Airport;
 
 public class AirportObserver implements Observer {
-    Simulation simulation;
+    SimulationView simulation;
     Airport airport;
 
-    public AirportObserver(Simulation s) {
+    public AirportObserver(SimulationView s) {
         this.simulation = s;
         airport = null; //no airport yet
     }
@@ -26,8 +27,11 @@ public class AirportObserver implements Observer {
         System.out.println("---------------------------------------------");
 
         //display airplanes and gate assignments
-        for(Airplane a : simulation.getAirplanes()) {
-            System.out.println(a.getName() + " has landed at " + airport.getName() + " Airport. Gate Assignment: " + a.getGate());
+        for (Airplane a : simulation.getAirplanes()) {
+            System.out.println(a.getName() + " has landed at " + airport.getName() 
+                + " Airport. Gate Assignment: " + a.getGate()
+            );
+            //display maintenance for each plane
             a.doMaintenance();
         }
         System.out.println("---------------------------------------------");
