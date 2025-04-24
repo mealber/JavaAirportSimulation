@@ -6,6 +6,9 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class AirplaneSorter {
+    /**
+    *Sorts list of airplanes by departure time.
+    */
     public ArrayList<Airplane> sortAirplanes(ArrayList<Airplane> airplanes) {
         Collections.sort(airplanes, new Comparator<Airplane>() {
             @Override

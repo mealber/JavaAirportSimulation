@@ -1,4 +1,3 @@
-
 package data;
 
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class SimulationPreparer {
     NameAssigner nameAssigner = new NameAssigner();
     AirplanePreparer preparer = new AirplanePreparer();
 
-    Airport currentAirport; //airport for current round of simulation
+    Airport currentAirport = null; //airport for current round of simulation
 
     ArrayList<Airplane> airplanes = new ArrayList<>(); //all airplanes used for simulation
     ArrayList<Passenger> passengers = new ArrayList<>(); //all passengers used for simulation
@@ -119,8 +118,11 @@ public class SimulationPreparer {
 
     public void reset() {
         preparer.setUp();
+        nameAssigner.reset();
         currentAirport = null;
         airplanes.clear();
         passengers.clear();
+        flights.clear();
+        airportType = -1;
     }
 }

@@ -26,6 +26,16 @@ public class Simulation implements Subject {
         airport = null; //none selected yet
         airplanes = null; //none made yet
         passengers = null; //node made yet
+
+        //create Observers
+        AirportObserver airportObserver = new AirportObserver(this);
+        AirplaneObserver airplaneObserver = new AirplaneObserver(this);
+        RoundObserver roundObserver = new RoundObserver(this);
+        
+        //add observers
+        addObserver(airportObserver);
+        addObserver(airplaneObserver);
+        addObserver(roundObserver);
     }
 
     @Override
@@ -49,17 +59,7 @@ public class Simulation implements Subject {
     *Runs simulation.
     */
     public void runSimulation() {
-        //create Observers
-        AirportObserver airportObserver = new AirportObserver(this);
-        AirplaneObserver airplaneObserver = new AirplaneObserver(this);
-        RoundObserver roundObserver = new RoundObserver(this);
-        
-        //add observers
-        addObserver(airportObserver);
-        addObserver(airplaneObserver);
-        addObserver(roundObserver);
-
-        //prepare objects for simulation
+       //prepare objects for simulation
         simulationPreparer.setUp();
         setObjects();
  

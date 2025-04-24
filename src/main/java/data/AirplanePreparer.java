@@ -85,6 +85,7 @@ public class AirplanePreparer {
             1600, 1700, 1800, 1900, 2030
         ));
 
+        takenGates.clear();
         takenGates.add(-1);
     }
 }

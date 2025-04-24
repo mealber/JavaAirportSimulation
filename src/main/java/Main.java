@@ -6,9 +6,8 @@ public class Main {
     */
     public static void main(String[] args) {
         Simulation simulation = new Simulation(); 
-
-//add observers
-
-        simulation.runSimulation();
+        while(true) {
+            simulation.runSimulation();
+        }
     }
 }
