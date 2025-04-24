@@ -16,12 +16,14 @@ public class NameAssigner {
     ArrayList<String> passengerNames; //name pool for passengers
     ArrayList<String> airportNames; //name pool for airports
     ArrayList<String> airplaneNames; //name pool for airplanes
+    private Random random;
 
     /**
     *Initializes name lists by calling reset.
     */
     public NameAssigner() {
         reset(); //reset initializes names
+        this.random = new Random(); //initializes random instance
     }
 
     /**
@@ -30,7 +32,6 @@ public class NameAssigner {
     *@param passengers list of all passengers.
     */
     public void namePassengers(ArrayList<Passenger> passengers) {
-        Random random = new Random();
         int size = passengerNames.size();
 
         for(Passenger p : passengers) {
@@ -50,7 +51,6 @@ public class NameAssigner {
     *@param airport the current airport.
     */
     public void nameAirports(Airport airport) {
-        Random random = new Random();
         int size = airportNames.size();
         int rand = random.nextInt(size); //generate random index for name list
 
@@ -63,7 +63,6 @@ public class NameAssigner {
     *@param Airplanes list of all airplanes.
     */
     public void nameAirplanes(ArrayList<Airplane> airplanes) {
-        Random random = new Random();
         int size = airplaneNames.size();
 
         for(Airplane a : airplanes) {
@@ -80,7 +79,7 @@ public class NameAssigner {
     /**
     *Resets name queues by re-initializing them.
     */
-    public void reset() {
+    public final void reset() {
         airportNames = new ArrayList<>(List.of(
             "LAX", "JFK", "ORD", "ATL", "DFW",
             "DEN", "SFO", "SEA", "MIA", "PHX"
