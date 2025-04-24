@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Simulation implements Subject {
     ArrayList<Observer> observers; //list of observers needed for simulation
     SimulationPreparer simulationPreparer; //prepares objects for each round of simulation
-    int time; //simulation time, resets every round
+    int round; //current round of simulation
 
     Airport airport; //current airport of simulation round
     ArrayList<Airplane> airplanes; //list of airplanes for simulation
@@ -16,7 +16,7 @@ public class Simulation implements Subject {
 
     public Simulation() {
         observers = new ArrayList<>();
-        time = 0;
+        round = 1; //start on round 1
         simulationPreparer = new SimulationPreparer();
 
         airport = null; //none selected yet
@@ -35,38 +35,50 @@ public class Simulation implements Subject {
     }
 
     @Override
-    public void notifyObservers() {
-        for(Observer o : observers) {
-            o.update();
-        }
+    public void notifyObservers(Observer observer) {
+        observer.update();
     }
 
     /**
     *Runs simulation.
     */
     public void runSimulation() {
+        //create Observers
+        AirportObserver airportObserver = new AirportObserver(this);
+        AirplaneObserver airplaneObserver = new AirplaneObserver(this);
+        //PassengerObserver passengerObserver = new PassengerObserver(this);
+
         simulationPreparer.setUp(); //create objects for simulation
         setObjects(); //set objects for simualtion
-        printHelper(); //begining print statements of simulation
+        //sort airplane list by departure time
 
-        //notify airplanes to arrive at airport
-        //notify passengers to start their cycles     
-        //notify airports at end of round to report status
+        notifyObservers(airportObserver); //displays state of current airport
+        notifyObservers(airplaneObserver); //simulations boarding and departures 
 
         simulationPreparer.reset(); //resets simulation before next round
+        round++; //increment round tracker
     }
 
     private void setObjects() {
-        airport = simulationPreparer.getCurrentAirport(); //set current airport
-        airplanes = simulationPreparer.getAirplanes(); //get list of airplanes
-        passengers = simulationPreparer.getPassengers(); //get list of passenegrs   
+        airport = getAirport(); //set current airport
+        airplanes = getAirplanes(); //get list of airplanes
+        passengers = getPassengers(); //get list of passenegrs   
     }
 
-    private void printHelper() {
-        System.out.println("New simulation round has started.");
-        for(Airplane a : airplanes) {
-            System.out.println(a.getName() + " has landed at " + airport.getName() + " Airport.");
-        }
+    public int getRound() {
+        return round;
+    }
+
+    public Airport getAirport() {
+        return simulationPreparer.getCurrentAirport();
+    }
+
+    public ArrayList<Airplane> getAirplanes() {
+        return simulationPreparer.getAirplanes();
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return simulationPreparer.getPassengers();
     }
 }
 
