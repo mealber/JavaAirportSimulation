@@ -28,9 +28,9 @@ public class Simulation implements Subject {
     }
 
     @Override
-    public void notifyObservers(int time) {
+    public void notifyObservers() {
         for(Observer o : observers) {
-            o.update(time);
+            o.update();
         }
     }
 
@@ -41,6 +41,8 @@ public class Simulation implements Subject {
         simulationPreparer.setUp(); //set up objects for simulation
 
         airport = simulationPreparer.getCurrentAirport(); //set current airport
+
+        System.out.println("New simulation round has started.");
 
         //notify airplanes to arrive at airport
         //notify passengers to start their cycles     

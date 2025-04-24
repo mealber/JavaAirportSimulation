@@ -2,7 +2,7 @@ package observer;
 
 public class AirplaneObserver implements Observer {
     @Override
-    public void update(int time) {
-        //todo
+    public void update() {
+        
     }
 }

@@ -6,5 +6,5 @@ public interface Observer {
     *
     *@param simulation time
     */
-    void update(int time);
+    void update();
 }
