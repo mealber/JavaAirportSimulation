@@ -3,11 +3,11 @@ package factory;
 public class LargeAirport extends Airport {
     public LargeAirport() {    
         //Initializes concrete Large airport
-        super(8, 40, 10);
+        super(3, 7, 6);
     }
 
-    private LargeAirport(int gates, int runways, int securityChecks) {
-        super(gates, runways, securityChecks);
+    private LargeAirport(int securityChecks, int gates, int runways) {
+        super(securityChecks, gates, runways);
     }
 
 
@@ -17,7 +17,7 @@ public class LargeAirport extends Airport {
     *@param name of airport
     */
     public Airport copy(String name) {
-        Airport a = new LargeAirport(8, 40, 10);
+        Airport a = new LargeAirport(3, 7, 6);
         a.setName(name);
         return a;
     }
