@@ -74,7 +74,7 @@ public class AirplanePreparer {
         return departure;
     }
 
-    public void setUp() {
+    public final void setUp() {
         //initialize list of 20 destinations
         destinations = new ArrayList<>(Arrays.asList(
             "New York", "Los Angeles", "Chicago", "Dallas", "Denver",

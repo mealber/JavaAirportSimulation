@@ -11,7 +11,7 @@ public class SimulationPreparer {
     NameAssigner nameAssigner = new NameAssigner();
     AirplanePreparer preparer = new AirplanePreparer();
 
-    public Airport currentAirport; //airport for current round of simulation
+    Airport currentAirport; //airport for current round of simulation
 
     ArrayList<Airplane> airplanes = new ArrayList<>(); //all airplanes used for simulation
     ArrayList<Passenger> passengers = new ArrayList<>(); //all passengers used for simulation
@@ -20,7 +20,7 @@ public class SimulationPreparer {
     /**
     *Sets up airports and airplanes for simulation.
     */
-    public void setUp() {
+    public final void setUp() {
         generateAirport();
         generateAirplanes();
         generatePassengers();
@@ -56,10 +56,10 @@ public class SimulationPreparer {
     }
 
     /**
-    *Generates 10 airplanes of random size and prepares them for simulation.
+    *Generates airplanes of random size, one for each gate.
     */
     private void generateAirplanes() {
-        for(int i = 0; i < 10; i++) { //create 10 airports at random for simulation
+        for(int i = 0; i < currentAirport.getGates(); i++) { //create airports at random for simulation
             AirplaneCreator airplaneCreator;
             int rand = random.nextInt(3);
 
@@ -107,15 +107,15 @@ public class SimulationPreparer {
     *Returns airport of current round of simulation.
     */
     public Airport getCurrentAirport() {
-        return currentAirport;
+        return currentAirport.copy(); //return copy
     }
 
     public ArrayList<Airplane> getAirplanes() {
-        return airplanes;
+        return new ArrayList<>(airplanes); //return copy of airplanes list
     }
 
     public ArrayList<Passenger> getPassengers() {
-        return passengers;    
+        return new ArrayList<>(passengers); //return copy of passengers list    
     }
 
     public void reset() {
