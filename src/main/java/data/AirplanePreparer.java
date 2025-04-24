@@ -30,18 +30,12 @@ public class AirplanePreparer {
 
     private int assignGate(Airport airport) {
         int numGates = airport.getGates();
-        int rand = random.nextInt(numGates + 1); //choose random gate
+        int rand = random.nextInt(numGates); //choose random gate
 
-        for(int i : takenGates) {
+        do {
+            rand = random.nextInt(numGates) + 1; //get values 1 to numGates
+        } while (takenGates.contains(rand)); //re-pick if taken
 
-            if(rand == 0) {
-                rand = rand + 1; //add one if random gate is 0
-            }            
-
-            while(rand == i) { //re-pick if gate is taken
-                rand = random.nextInt(numGates + 1);
-            } 
-        }
         takenGates.add(rand); //mark gate as taken
         return rand;
     }
