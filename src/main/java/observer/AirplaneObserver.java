@@ -14,6 +14,9 @@ public class AirplaneObserver implements Observer {
     @Override
     public void update() {
         for (Airplane air : sim.getAirplanes()) {
+            System.out.println("Now boarding " + air.getName() + " at gate " 
+                + air.getGate() + " .\n"
+            );
             for (Passenger pas : sim.getPassengers()) {
                 //checks if passengers are on the next flight to depart
                 if (air.getDepartureTime() == pas.getDepartureTime()) { 
@@ -27,10 +30,12 @@ public class AirplaneObserver implements Observer {
                 }
             }
             //simulates plane departure
+            System.out.println("");
             System.out.println(air.getName()
                 + " is now departing at " + air.getDepartureTime() 
                 + " to " + air.getDestination() + "."
             );
+            System.out.println("---------------------------------------------");
         }
     }
 }

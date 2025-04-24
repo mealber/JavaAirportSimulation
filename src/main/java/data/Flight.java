@@ -4,16 +4,18 @@ public class Flight {
     private String destination;
     private int gate;
     private int boardingTime;
+    private String name;
 
     /**
     *Creates immutable flight object,
     *contains neccesary info for passengers,
     *this includes destination, gate number, and boarding time.
     */
-    public Flight(String destination, int gate, int departureTime) {
+    public Flight(String destination, int gate, int departureTime, String name) {
         this.destination = destination;
         this.gate = gate;
         this.boardingTime = calculateBoardingTime(departureTime);
+        this.name = name;
     }
 
     /**
@@ -37,5 +39,9 @@ public class Flight {
 
     public int getBoardingTime() {
         return boardingTime;
+    }
+
+    public String getName() {
+        return name;
     }
 }

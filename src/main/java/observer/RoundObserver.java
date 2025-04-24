@@ -18,15 +18,15 @@ public class RoundObserver implements Observer {
         air = sim.getAirport();
        
         //print airport log
-        System.out.println("---------------------------------------------");
         System.out.println(air.getName() + " Airport Log");
-        System.out.println("---------------------------------------------");
+        System.out.println("");
         System.out.println("Passengers Serviced: " + sim.getPassengers().size());
         System.out.println("Planes Departed: " + sim.getAirplanes().size());
 
         //pause simulation for 10 seconds between rounds
         try {
-            System.out.println("\n-----Starting next round in 10 seconds-----");
+            System.out.println("\n\n-------------Round " + sim.getRound() + " Complete!-------------");
+            System.out.println("-----Starting next round in 10 seconds-----\n\n");
             Thread.sleep(10000); //pause for 10 seconds between rounds
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();

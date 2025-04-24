@@ -19,8 +19,8 @@ public class BoardingState implements PassengerState {
 
         //passenger successfully boards plane
         System.out.println(passenger.getName() 
-            + " has boarded at gate " 
-            + passenger.getGate() + ".");
+            + " has boarded " + passenger.getFlightName() + " at "
+            + passenger.getBoardingTime() + ".");
 
         return false; //return false to indicate final state is reached
     }

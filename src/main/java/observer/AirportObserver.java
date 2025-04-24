@@ -33,6 +33,7 @@ public class AirportObserver implements Observer {
             );
             //display maintenance for each plane
             a.doMaintenance();
+            System.out.println("");
         }
         System.out.println("---------------------------------------------");
     }

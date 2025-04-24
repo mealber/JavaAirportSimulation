@@ -23,11 +23,14 @@ public class SimulationPreparer {
     */
     public final void setUp() {
         generateAirport();
-        generateAirplanes();
-        generatePassengers();
-
         nameAssigner.nameAirports(currentAirport, airportType);
+
+        generateAirplanes();
         nameAssigner.nameAirplanes(airplanes);
+
+        generateFlights(); //generate flights for passengers
+
+        generatePassengers();
         nameAssigner.namePassengers(passengers);
     }
 
@@ -81,8 +84,6 @@ public class SimulationPreparer {
             //assigns gate, destination, and departure time
             preparer.prepareAirplane(airplane, currentAirport);
 
-            flights.add(airplane.toFlight()); //create flight for airplane
-
             airplanes.add(airplane);
         }
     }
@@ -115,6 +116,12 @@ public class SimulationPreparer {
 
     public ArrayList<Passenger> getPassengers() {
         return new ArrayList<>(passengers); //return copy of passengers list    
+    }
+
+    private void generateFlights() {
+        for (Airplane airplane : airplanes) {
+            flights.add(airplane.toFlight()); //create flight for every airplane
+        }
     }
 
     /**

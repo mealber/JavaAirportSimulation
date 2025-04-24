@@ -68,7 +68,7 @@ public abstract class Airplane {
     *contains neccesary flight info for passengers.
     */
     public Flight toFlight() {
-        Flight flight = new Flight(destination, gate, departureTime);
+        Flight flight = new Flight(destination, gate, departureTime, name);
         return flight;
     }
 

@@ -56,6 +56,10 @@ public class Passenger {
         return flight.getBoardingTime() + 100;
     }
 
+    public String getFlightName() {
+        return flight.getName();
+    }
+
     public void setName(String name) {
         this.name = name;
     }
