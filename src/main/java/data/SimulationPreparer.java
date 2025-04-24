@@ -44,11 +44,8 @@ public class SimulationPreparer {
             case 1:
                 airportCreator = new MediumAirportCreator();
                 break;
-            case 2:
-                airportCreator = new LargeAirportCreator();
-                break;
             default:
-                airportCreator = new SmallAirportCreator();
+                airportCreator = new LargeAirportCreator();
                 break;
             }
 
@@ -70,11 +67,8 @@ public class SimulationPreparer {
                 case 1:
                     airplaneCreator = new MediumPlaneCreator();
                     break;
-                case 2:
-                    airplaneCreator = new LargePlaneCreator();
-                    break;
                 default:
-                    airplaneCreator = new SmallPlaneCreator();
+                    airplaneCreator = new LargePlaneCreator();
                     break;
             }
             Airplane airplane = airplaneCreator.createAirplane();
