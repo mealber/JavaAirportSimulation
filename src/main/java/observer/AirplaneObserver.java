@@ -14,10 +14,10 @@ public class AirplaneObserver implements Observer {
         for(Airplane a : s.getAirplanes()) {
             for(Passenger p : s.getPassengers()) {
                 if(a.getDepartureTime() == p.getDepartureTime()) { //checks if passengers are on the next flight to depart
-                    while(!(p.getState() instanceof BoardingState)) {
+                    while(true) {
                         boolean advanced = p.updateState(s.getAirport()); //runs boarding simulation for passengers on next flight
                         if(!advanced) {
-                            break; //breaks loop if passengers fail a boarding stage
+                            break; //breaks loop if passengers fail a boarding stage or finishes boarding
                         }
                     }
                 }
