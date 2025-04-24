@@ -1,11 +1,8 @@
- plugins {
-      id "com.github.spotbugs" version "5.0.13"
-      id "checkstyle"
- }
-
 plugins {
     id 'application'
     id 'jacoco'
+    id 'checkstyle'
+    id 'com.github.spotbugs' version '5.0.13'
 }
 
 repositories {
@@ -14,9 +11,14 @@ repositories {
 }
 
 dependencies {
+    //JUnit 5
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.0'
+
+    //Mockito for mocking in unit tests
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+
     implementation files('cls/')
 }
 
@@ -48,33 +50,26 @@ jacocoTestReport {
     }
 }
 
-
- apply plugin: 'checkstyle'
-  checkstyle {
-    // Keep checkstyle a little quieter
+checkstyle {
+    toolVersion = "8.8"
     ignoreFailures = true
     showViolations = false
-  }
+}
 
-  tasks.withType(Checkstyle) {
-  }
-  checkstyle {
-      toolVersion = "8.8"
-  }
+tasks.withType(Checkstyle) {
+}
 
-// Configure SpotBugs
-// To generate an HTML report instead of XML
- spotbugs {
-     toolVersion = '4.8.4'
-     ignoreFailures = true
-     showProgress = true
-     effort = 'max'
-     reportLevel = 'low'
- }
+spotbugs {
+    toolVersion = '4.8.4'
+    ignoreFailures = true
+    showProgress = true
+    effort = 'max'
+    reportLevel = 'low'
+}
 
- tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
-     reports {
-         html.required.set(true)
-         xml.required.set(false)
-     }
- }
+tasks.withType(com.github.spotbugs.snom.SpotBugsTask).configureEach {
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+    }
+}
