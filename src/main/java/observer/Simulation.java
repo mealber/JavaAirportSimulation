@@ -1,10 +1,12 @@
 package observer;
 
+import data.SimulationPreparer;
 import java.util.ArrayList;
 
 public class Simulation implements Subject {
-    ArrayList<Observer> observers = new ArrayList<>();
-    int time = 0;
+    ArrayList<Observer> observers = new ArrayList<>(); //list of observers needed for simulation
+    int time = 0; //simulation time, resets every round
+    SimulationPreparer simulationPreparer = new SimulationPreparer(); //prepares objects for each round of simulation
 
     @Override
     public void addObserver(Observer observer) {
@@ -23,7 +25,10 @@ public class Simulation implements Subject {
         }
     }
 
+    /**
+    *Runs simulation.
+    */
     public void runSimulation() {
-        //TODO
+        simulationPreparer.setUp();   
     }
 }
