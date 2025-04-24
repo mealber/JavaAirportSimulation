@@ -1,8 +1,10 @@
 package observer;
 
 import data.SimulationPreparer;
-import factory.*;
-import state.*;
+import data.AirplaneSorter;
+import factory.Airplane;
+import factory.Airport;
+import state.Passenger;
 import java.util.ArrayList;
 
 public class Simulation implements Subject {
@@ -13,6 +15,8 @@ public class Simulation implements Subject {
     Airport airport; //current airport of simulation round
     ArrayList<Airplane> airplanes; //list of airplanes for simulation
     ArrayList<Passenger> passengers; //list of passengers for simulation
+
+    AirplaneSorter airplaneSorter = new AirplaneSorter(); //sorts airplanes by departure time
 
     public Simulation() {
         observers = new ArrayList<>();
@@ -58,7 +62,6 @@ public class Simulation implements Subject {
         //prepare objects for simulation
         simulationPreparer.setUp();
         setObjects();
-        //sort airplane list by departure time
  
         //notify observers of new round
         notifyObservers();
@@ -83,16 +86,10 @@ public class Simulation implements Subject {
     }
 
     public ArrayList<Airplane> getAirplanes() {
-        return simulationPreparer.getAirplanes();
+        return airplaneSorter.sortAirplanes(simulationPreparer.getAirplanes());
     }
 
     public ArrayList<Passenger> getPassengers() {
         return simulationPreparer.getPassengers();
     }
 }
-
-
-
-
-
-
