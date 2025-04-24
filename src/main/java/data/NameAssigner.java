@@ -14,7 +14,9 @@ import state.*;
 */
 public class NameAssigner {
     ArrayList<String> passengerNames; //name pool for passengers
-    ArrayList<String> airportNames; //name pool for airports
+    ArrayList<String> smallAirportNames; //name pool for small airports
+    ArrayList<String> mediumAirportNames; //name pool for medium airports
+    ArrayList<String> largeAirportNames; //name pool for large airports
     ArrayList<String> airplaneNames; //name pool for airplanes
     private Random random;
 
@@ -50,11 +52,21 @@ public class NameAssigner {
     *
     *@param airport the current airport.
     */
-    public void nameAirports(Airport airport) {
-        int size = airportNames.size();
+    public void nameAirports(Airport airport, int type) {
+        int size = smallAirportNames.size();
         int rand = random.nextInt(size); //generate random index for name list
 
-        airport.setName(airportNames.get(rand)); //set name using random index
+        switch(type) { //chooses name pool based on airport size
+            case 0:
+                airport.setName(smallAirportNames.get(rand)); //set name using random index
+                break;
+            case 1:
+                airport.setName(mediumAirportNames.get(rand));
+                break;
+            default:
+                airport.setName(largeAirportNames.get(rand));
+                break;
+        }
     }
 
     /**
@@ -80,9 +92,16 @@ public class NameAssigner {
     *Resets name queues by re-initializing them.
     */
     public final void reset() {
-        airportNames = new ArrayList<>(List.of(
-            "LAX", "JFK", "ORD", "ATL", "DFW",
-            "DEN", "SFO", "SEA", "MIA", "PHX"
+        smallAirportNames = new ArrayList<>(List.of(
+            "SEA", "MIA", "PHX"
+        ));
+
+        mediumAirportNames = new ArrayList<>(List.of(
+            "ATL", "IAH", "DEN"
+        ));
+
+        largeAirportNames = new ArrayList<>(List.of(
+            "LAX", "JFK", "ORD"
         ));
 
         passengerNames = new ArrayList<>(List.of(
