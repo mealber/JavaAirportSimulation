@@ -1,23 +1,28 @@
 package observer;
 
-import data.SimulationPreparer;
 import data.AirplaneSorter;
+import data.SimulationPreparer;
 import factory.Airplane;
 import factory.Airport;
-import state.Passenger;
 import java.util.ArrayList;
+import state.Passenger;
 
 public class Simulation implements Subject, SimulationView {
     private ArrayList<Observer> observers; //list of observers needed for simulation
     private SimulationPreparer simulationPreparer; //prepares objects for each round of simulation
     private int round; //current round of simulation
 
-    private AirplaneSorter airplaneSorter = new AirplaneSorter(); //sorts airplanes by departure time
+    //sorts airplanes by departure time
+    private AirplaneSorter airplaneSorter = new AirplaneSorter();
 
     private AirportObserver airportObserver;
     private AirplaneObserver airplaneObserver;
     private RoundObserver roundObserver;
 
+    /**
+    *Creates new simulation object,
+    *initializes observers and round number.
+    */
     public Simulation() {
         observers = new ArrayList<>();
         round = 1; //start on round 1
@@ -46,7 +51,7 @@ public class Simulation implements Subject, SimulationView {
 
     @Override
     public void notifyObservers() {
-        for(Observer o : observers) {
+        for (Observer o : observers) {
             o.update();
         }
     }
@@ -55,7 +60,7 @@ public class Simulation implements Subject, SimulationView {
     *Runs simulation.
     */
     public void runSimulation() {
-       //prepare objects for simulation
+        //prepare objects for simulation
         simulationPreparer.setUp();
  
         //notify observers of new round

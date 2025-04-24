@@ -17,8 +17,6 @@ public interface Subject {
 
     /**
     *Notifies all observers when new simulation round should start.
-    *
-    *@param time the simulation time
     */
     void notifyObservers();
 }

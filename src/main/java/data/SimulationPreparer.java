@@ -1,9 +1,9 @@
 package data;
 
-import java.util.ArrayList;
 import factory.*;
-import state.*;
+import java.util.ArrayList;
 import java.util.Random;
+import state.Passenger;
 
 public class SimulationPreparer {
     Random random = new Random();
@@ -38,7 +38,7 @@ public class SimulationPreparer {
         AirportCreator airportCreator;
         int rand = random.nextInt(3);
 
-        switch(rand) { //randomly choose airport size
+        switch (rand) { //randomly choose airport size
             case 0:
                 airportCreator = new SmallAirportCreator();
                 airportType = 0;
@@ -51,7 +51,7 @@ public class SimulationPreparer {
                 airportCreator = new LargeAirportCreator();
                 airportType = 2;
                 break;
-            }
+        }
 
         currentAirport = airportCreator.createAirport();
     }
@@ -60,11 +60,12 @@ public class SimulationPreparer {
     *Generates airplanes of random size, one for each gate.
     */
     private void generateAirplanes() {
-        for(int i = 0; i < currentAirport.getGates(); i++) { //create airports at random for simulation
+        //create airports at random for simulation
+        for (int i = 0; i < currentAirport.getGates(); i++) { 
             AirplaneCreator airplaneCreator;
             int rand = random.nextInt(3);
 
-            switch(rand) { //randomly choose airport size
+            switch (rand) { //randomly choose airport size
                 case 0:
                     airplaneCreator = new SmallPlaneCreator();
                     break;
@@ -90,7 +91,7 @@ public class SimulationPreparer {
     *Generates 20 passengers and assigns them to random flights.
     */
     private void generatePassengers() {
-        for(int i = 0; i < currentAirport.getGates() + random.nextInt(5); i++) {
+        for (int i = 0; i < currentAirport.getGates() + random.nextInt(5); i++) {
             int size = flights.size();
             int rand = random.nextInt(size); //choose random flight from list
 
@@ -116,6 +117,9 @@ public class SimulationPreparer {
         return new ArrayList<>(passengers); //return copy of passengers list    
     }
 
+    /**
+    *Resets all simulation attributes.
+    */
     public void reset() {
         preparer.setUp();
         nameAssigner.reset();

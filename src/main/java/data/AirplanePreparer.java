@@ -1,9 +1,10 @@
 package data;
 
-import java.util.Random;
+import factory.Airplane;
+import factory.Airport;
 import java.util.ArrayList;
 import java.util.Arrays;
-import factory.*;
+import java.util.Random;
 
 public class AirplanePreparer {
     Random random = new Random();
@@ -20,7 +21,8 @@ public class AirplanePreparer {
     *Prepares airplane for flight simulation by setting, 
     *destination, gate number, and departure time.
     *
-    *@param airplane airplane to be prepared.
+    *@param plane airplane to be prepared.
+    *@param airport current airport.
     */
     public void prepareAirplane(Airplane plane, Airport airport) {
         plane.setDestination(assignDestination());
@@ -44,7 +46,7 @@ public class AirplanePreparer {
         int size = destinations.size();
         int rand = random.nextInt(size); //choose random destination
 
-        while(destinations.get(rand) == null) { //re-pick if destination has been taken
+        while (destinations.get(rand) == null) { //re-pick if destination has been taken
             rand = random.nextInt(size);
         }
 
@@ -58,7 +60,7 @@ public class AirplanePreparer {
         int size = departures.size();
         int rand = random.nextInt(size); //choose random departure time
 
-        while(departures.get(rand) == -1) { //re-pick if departure time has been taken
+        while (departures.get(rand) == -1) { //re-pick if departure time has been taken
             rand = random.nextInt(size);
         }
 
@@ -68,6 +70,9 @@ public class AirplanePreparer {
         return departure;
     }
 
+    /**
+    *Sets up name lists for simulation.
+    */
     public final void setUp() {
         //initialize list of 20 destinations
         destinations = new ArrayList<>(Arrays.asList(

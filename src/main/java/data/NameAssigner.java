@@ -1,11 +1,11 @@
 package data;
 
+import factory.Airplane;
+import factory.Airport;
 import java.util.ArrayList;
-import factory.*;
 import java.util.List;
-import state.Passenger;
 import java.util.Random;
-import state.*;
+import state.Passenger;
 
 /**
 *This class chooses random names for Passengers,
@@ -36,10 +36,10 @@ public class NameAssigner {
     public void namePassengers(ArrayList<Passenger> passengers) {
         int size = passengerNames.size();
 
-        for(Passenger p : passengers) {
+        for (Passenger p : passengers) {
             int rand = random.nextInt(size); //generate random index for name list
 
-            while(passengerNames.get(rand) == null) {
+            while (passengerNames.get(rand) == null) {
                 rand = random.nextInt(size); //generate new index if name has been used
             }
             p.setName(passengerNames.get(rand)); //set name using random index
@@ -56,7 +56,7 @@ public class NameAssigner {
         int size = smallAirportNames.size();
         int rand = random.nextInt(size); //generate random index for name list
 
-        switch(type) { //chooses name pool based on airport size
+        switch (type) { //chooses name pool based on airport size
             case 0:
                 airport.setName(smallAirportNames.get(rand)); //set name using random index
                 break;
@@ -72,15 +72,15 @@ public class NameAssigner {
     /**
     *Names all Airplanes.
     *
-    *@param Airplanes list of all airplanes.
+    *@param airplanes list of all airplanes.
     */
     public void nameAirplanes(ArrayList<Airplane> airplanes) {
         int size = airplaneNames.size();
 
-        for(Airplane a : airplanes) {
+        for (Airplane a : airplanes) {
             int rand = random.nextInt(size); //generate random index for name list
 
-            while(airplaneNames.get(rand) == null) {
+            while (airplaneNames.get(rand) == null) {
                 rand = random.nextInt(size); //generate new index if name has been used
             }
             a.setName(airplaneNames.get(rand)); //set name using random index

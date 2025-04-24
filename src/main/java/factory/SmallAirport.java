@@ -11,7 +11,7 @@ public class SmallAirport extends Airport {
     }
 
     /**
-    *Returns defensive copy of airport 
+    *Returns defensive copy of airport. 
     *
     *@param name of airport
     */

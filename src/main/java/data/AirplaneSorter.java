@@ -1,7 +1,7 @@
 package data;
 
-import java.util.ArrayList;
 import factory.Airplane;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
