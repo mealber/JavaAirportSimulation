@@ -14,6 +14,7 @@ public class AirportObserver implements Observer {
     @Override
     public void update() {
         airport = simulation.getAirport(); //update airport to current airport
+        System.out.println("---------------------------------------------");
         System.out.println("Simulation Round " + simulation.getRound() + ":");
         System.out.println("---------------------------------------------");
 
@@ -27,6 +28,7 @@ public class AirportObserver implements Observer {
         //display airplanes and gate assignments
         for(Airplane a : simulation.getAirplanes()) {
             System.out.println(a.getName() + " has landed at " + airport.getName() + " Airport. Gate Assignment: " + a.getGate());
+            a.doMaintenance();
         }
         System.out.println("---------------------------------------------");
     }

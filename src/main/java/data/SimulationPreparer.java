@@ -91,7 +91,7 @@ public class SimulationPreparer {
     *Generates 20 passengers and assigns them to random flights.
     */
     private void generatePassengers() {
-        for(int i = 0; i < currentAirport.getGates(); i++) {
+        for(int i = 0; i < currentAirport.getGates() + random.nextInt(5); i++) {
             int size = flights.size();
             int rand = random.nextInt(size); //choose random flight from list
 
