@@ -8,7 +8,7 @@ public class SecurityState implements PassengerState {
         //generate random number for each security check
         for (int i = 0; i < airport.getSecurityChecks(); i++) {
             double failingChance = Math.random();
-            if (failingChance < 0.05) { //5% chance to fail each security checkpoint
+            if (failingChance < 0.10) { //10% chance to fail each security checkpoint
 
                 //security checkpoint failed
                 System.out.println(passenger.getName() 

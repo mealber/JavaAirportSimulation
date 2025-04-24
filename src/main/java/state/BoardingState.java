@@ -7,7 +7,7 @@ public class BoardingState implements PassengerState {
     public boolean handle(Passenger passenger, Airport airport) {
         //get random number between 0.0 and 1.0
         double failingChance = Math.random();
-        if (failingChance < 0.05) { //5% chance to miss boarding time
+        if (failingChance < 0.10) { //10% chance to miss boarding time
 
             //passenger misses boarding their plane
             System.out.println(passenger.getName() 
@@ -22,6 +22,6 @@ public class BoardingState implements PassengerState {
             + " has boarded at gate " 
             + passenger.getGate() + ".");
 
-        return true;
+        return false; //return false to indicate final state is reached
     }
 }
