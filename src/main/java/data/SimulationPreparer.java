@@ -17,6 +17,8 @@ public class SimulationPreparer {
     ArrayList<Passenger> passengers = new ArrayList<>(); //all passengers used for simulation
     ArrayList<Flight> flights = new ArrayList<>(); //all flights used for simulation
 
+    int airportType = -1; //keeps track of airportType
+
     /**
     *Sets up airports and airplanes for simulation.
     */
@@ -25,7 +27,7 @@ public class SimulationPreparer {
         generateAirplanes();
         generatePassengers();
 
-        nameAssigner.nameAirports(currentAirport);
+        nameAssigner.nameAirports(currentAirport, airportType);
         nameAssigner.nameAirplanes(airplanes);
         nameAssigner.namePassengers(passengers);
     }
@@ -40,12 +42,15 @@ public class SimulationPreparer {
         switch(rand) { //randomly choose airport size
             case 0:
                 airportCreator = new SmallAirportCreator();
+                airportType = 0;
                 break;
             case 1:
                 airportCreator = new MediumAirportCreator();
+                airportType = 1;
                 break;
             default:
                 airportCreator = new LargeAirportCreator();
+                airportType = 2;
                 break;
             }
 
@@ -86,7 +91,7 @@ public class SimulationPreparer {
     *Generates 20 passengers and assigns them to random flights.
     */
     private void generatePassengers() {
-        for(int i = 0; i < 20; i++) {
+        for(int i = 0; i < currentAirport.getGates(); i++) {
             int size = flights.size();
             int rand = random.nextInt(size); //choose random flight from list
 
