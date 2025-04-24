@@ -2,15 +2,22 @@ package factory;
 
 public class MediumAirport extends Airport {
     public MediumAirport() {    
-        //Initializes concrete Small airport
+        //Initializes concrete medium airport
         super(5, 20, 6);
     }
 
-    private MediumAirport(int gates, int passengers, int runways) {
-        super(gates, passengers, runways);
+    private MediumAirport(int gates, int runways, int securityChecks) {
+        super(gates, runways, securityChecks);
     }
 
-    public Airport copy() {
-        return new MediumAirport(5, 20, 6);
+    /**
+    *Returns defensive copy of airport 
+    *
+    *@param name of airport
+    */
+    public Airport copy(String name) {
+        Airport a = new MediumAirport(8, 40, 10);
+        a.setName(name);
+        return a;
     }
 }

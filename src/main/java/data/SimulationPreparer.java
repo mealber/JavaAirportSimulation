@@ -101,7 +101,7 @@ public class SimulationPreparer {
     *Returns airport of current round of simulation.
     */
     public Airport getCurrentAirport() {
-        return currentAirport.copy(); //return copy
+        return currentAirport.copy(currentAirport.getName()); //return copy
     }
 
     public ArrayList<Airplane> getAirplanes() {

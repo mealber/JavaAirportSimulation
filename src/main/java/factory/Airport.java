@@ -22,7 +22,7 @@ public abstract class Airport {
     /**
     *Returns a copy of airport object.
     */
-    public abstract Airport copy();
+    public abstract Airport copy(String name);
 
     public String getName() {
         return name;

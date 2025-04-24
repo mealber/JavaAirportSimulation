@@ -6,11 +6,18 @@ public class SmallAirport extends Airport {
         super(3, 10, 4);
     }
 
-    private SmallAirport(int gates, int passengers, int runways) {
-        super(gates, passengers, runways);
+    private SmallAirport(int gates, int runways, int securityChecks) {
+        super(gates, runways, securityChecks);
     }
 
-    public Airport copy() {
-        return new SmallAirport(3, 10, 4);
+    /**
+    *Returns defensive copy of airport 
+    *
+    *@param name of airport
+    */
+    public Airport copy(String name) {
+        Airport a = new SmallAirport(8, 40, 10);
+        a.setName(name);
+        return a;
     }
 }
