@@ -30,7 +30,7 @@ class NameAssignerTest {
     private <T> List<T> getList(String fieldName) throws Exception {
         Field f = NameAssigner.class.getDeclaredField(fieldName);
         f.setAccessible(true);
-        return (List<T>)f.get(na);
+        return (List<T>) f.get(na);
     }
 
     @BeforeEach
@@ -41,6 +41,7 @@ class NameAssignerTest {
     @Test
     void testResetInitializesAllPools() throws Exception {
         na.reset();
+        //verify all pools are initialized
         assertEquals(3, getList("smallAirportNames").size());
         assertEquals(3, getList("mediumAirportNames").size());
         assertEquals(3, getList("largeAirportNames").size());
@@ -51,9 +52,7 @@ class NameAssignerTest {
     @Test
     void testNameAirports_smallMediumLarge() throws Exception {
         //make random pick index 2
-        injectRandom(new Random() {
-            @Override public int nextInt(int bound) { return 2; }
-        });
+        injectRandom(new AlwaysTwoRandom());
         Airport mockA = mock(Airport.class);
 
         //test type small
@@ -72,9 +71,7 @@ class NameAssignerTest {
     @Test
     void testNameAirplanes_single() throws Exception {
         //make random pick 1
-        injectRandom(new Random() {
-            @Override public int nextInt(int bound) { return 1; }
-        });
+        injectRandom(new AlwaysOneRandom());
         Airplane p = mock(Airplane.class);
         ArrayList<Airplane> list = new ArrayList<>();
         list.add(p);
@@ -90,9 +87,7 @@ class NameAssignerTest {
     @Test
     void testNamePassengers_single() throws Exception {
         //make random pick 0
-        injectRandom(new Random() {
-            @Override public int nextInt(int bound) { return 0; }
-        });
+        injectRandom(new AlwaysZeroRandom());
         Passenger p = mock(Passenger.class);
         ArrayList<Passenger> list = new ArrayList<>();
         list.add(p);
@@ -104,4 +99,38 @@ class NameAssignerTest {
         List<String> names = getList("passengerNames");
         assertNull(names.get(0));
     }
+
+    //custom random class to always return 1
+    private static class AlwaysOneRandom extends Random {
+        //serialVersionUID to avoid SpotBugs warning
+        private static final long serialVersionUID = 1L;
+        
+        @Override
+        public int nextInt(int bound) {
+            return 1;
+        }
+    }
+
+    //custom random class to always return 2
+    private static class AlwaysTwoRandom extends Random {
+        //serialVersionUID to avoid SpotBugs warning
+        private static final long serialVersionUID = 1L;
+        
+        @Override
+        public int nextInt(int bound) {
+            return 2;
+        }
+    }
+
+    //custom random class to always return 0
+    private static class AlwaysZeroRandom extends Random {
+        //serialVersionUID to avoid SpotBugs warning
+        private static final long serialVersionUID = 1L;
+        
+        @Override
+        public int nextInt(int bound) {
+            return 0;
+        }
+    }
 }
+

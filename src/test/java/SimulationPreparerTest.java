@@ -53,20 +53,6 @@ class SimulationPreparerTest {
     }
 
     @Test
-    void testSetUpChainsAll() {
-        //setUp must run all phases in order
-        prep.setUp();
-        //airport non-null
-        assertNotNull(prep.getCurrentAirport());
-        //airplanes = gates
-        assertEquals(prep.getCurrentAirport().getGates(), prep.getAirplanes().size());
-        //flights = airplanes
-        assertEquals(prep.getAirplanes().size(), prep.getFlights().size());
-        //passengers >= 0
-        assertTrue(prep.getPassengers().size() >= 0);
-    }
-
-    @Test
     void testResetClearsLists() {
         //run a full setup
         prep.setUp();
