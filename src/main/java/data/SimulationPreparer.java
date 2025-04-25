@@ -37,7 +37,7 @@ public class SimulationPreparer {
     /**
     *Generates 10 airports of random size.
     */
-    private void generateAirport() {
+    public void generateAirport() {
         AirportCreator airportCreator;
         int rand = random.nextInt(3);
 
@@ -62,7 +62,7 @@ public class SimulationPreparer {
     /**
     *Generates airplanes of random size, one for each gate.
     */
-    private void generateAirplanes() {
+    public void generateAirplanes() {
         //create airports at random for simulation
         for (int i = 0; i < currentAirport.getGates(); i++) { 
             AirplaneCreator airplaneCreator;
@@ -91,7 +91,7 @@ public class SimulationPreparer {
     /**
     *Generates 20 passengers and assigns them to random flights.
     */
-    private void generatePassengers() {
+    public void generatePassengers() {
         for (int i = 0; i < currentAirport.getGates() + random.nextInt(5); i++) {
             int size = flights.size();
             int rand = random.nextInt(size); //choose random flight from list
@@ -118,7 +118,11 @@ public class SimulationPreparer {
         return new ArrayList<>(passengers); //return copy of passengers list    
     }
 
-    private void generateFlights() {
+    public ArrayList<Flight> getFlights() {
+        return new ArrayList<>(flights); //return copy of flights list    
+    }
+
+    public void generateFlights() {
         for (Airplane airplane : airplanes) {
             flights.add(airplane.toFlight()); //create flight for every airplane
         }
