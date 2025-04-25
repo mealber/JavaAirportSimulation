@@ -1,14 +1,15 @@
-import data.SimulationPreparer;
-import factory.Airport;
-import factory.Airplane;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import data.Flight;
-import state.Passenger;
+import data.SimulationPreparer;
+import factory.Airplane;
+import factory.Airport;
+import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import state.Passenger;
 
 class SimulationPreparerTest {
 

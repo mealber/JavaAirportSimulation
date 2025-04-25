@@ -1,8 +1,9 @@
-import factory.Airplane;
-import data.Flight;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
-import static org.junit.jupiter.api.Assertions.*;
+import data.Flight;
+import factory.Airplane;
+import org.junit.jupiter.api.Test;
 
 public class AirplaneTest {
 
