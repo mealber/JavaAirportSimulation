@@ -1,6 +1,13 @@
+import observer.Simulation;
+
 public class Main {
+    /**
+    *entry point of airport simulation.
+    */
     public static void main(String[] args) {
-        Airplane boeing = new Boeing();
-        System.out.println("Boeing Capacity: " + boeing.getCapacity());
+        Simulation simulation = new Simulation(); 
+        while (true) {
+            simulation.runSimulation();
+        }
     }
 }
