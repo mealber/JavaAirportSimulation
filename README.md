@@ -23,6 +23,5 @@ This project is a **command-line airport simulation** designed to model the oper
 - Demonstrates familiarity with **Java programming and design patterns**  
 
 ## Notes
-- This project was originally created as a class assignment, updated for clarity and resume presentation  
 - **Prerequisite:** Gradle must be installed to build and run the project
 
